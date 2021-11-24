@@ -1,4 +1,4 @@
-## Keeiyuan's simple todo vuejs application
+## A very simple todo vuejs application
 
 ```shell
 npm install
