@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import moment from 'moment'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -9,7 +10,8 @@ export default new Vuex.Store({
 			{
 				id: 1,
 				name: '',
-				done: false
+				done: false,
+				date: ''
 			}
 		]
 	},
@@ -22,6 +24,7 @@ export default new Vuex.Store({
 			const lastTodo = state.todo[todoLength];
 			data.id = lastTodo.id + 1;
 			data.done = false;
+			data.date = moment().format('YYYY-MM-DD hh:mm:ss');
 			state.todo.push(data)
 		},
 		updateTodo (state, data) {

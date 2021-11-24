@@ -1,5 +1,5 @@
 <template>
-  <div class="opacity-0 absolute h-full right-0 top-0 py-1 px-1">
+  <div class="opacity-0 absolute h-full right-0 top-0 py-1 px-1 mr-3">
     <div class="flex flex-row items-center">
       <font-awesome-icon class="mr-3 delete icon" icon="trash" title="Delete item" v-on:click="deleteItem" />
       <font-awesome-icon class="done icon" icon="check" v-show="!completed" title="Done" v-on:click="doneItem" />
