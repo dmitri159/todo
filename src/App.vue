@@ -6,12 +6,9 @@
         <TodoItem :item="todo" />
       </li>
       <li>
-        <TodoItem />
+        <TodoItem  />
       </li>
     </ul>
-    <pre v-html="todoList">
-      
-    </pre>
   </div>
 </template>
 

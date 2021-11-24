@@ -18,7 +18,9 @@ export default new Vuex.Store({
 			state.todo = data
 		},
 		createTodo (state, data) {
-			data.id = state.todo.length + 1;
+			const todoLength = state.todo.length - 1;
+			const lastTodo = state.todo[todoLength];
+			data.id = lastTodo.id + 1;
 			data.done = false;
 			state.todo.push(data)
 		},
@@ -38,6 +40,7 @@ export default new Vuex.Store({
 	actions: {
 		async readTodoJson ({commit}) {
 			const resp = await axios.get('/external/todo.json')
+			console.log('json loaded')
 			commit("resetTodo", resp.data)
 		},
 		createTodo ({commit}, todo) {

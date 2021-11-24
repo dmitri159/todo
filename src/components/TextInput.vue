@@ -1,5 +1,8 @@
 <template>
-  <input ref="textinput" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" :class="{ 'line-through': done }" v-model="text" v-on:keydown="onKeyDown" v-on:keydown.enter="onEnter">
+  <div class="w-full relative flex flex-row items-center">
+    <label class="absolute pl-2" v-show="id > 0">{{ id }}.</label>
+    <input ref="textinput" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 pl-7 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" :class="{ 'line-through': done }" v-model="text" v-on:keydown="onKeyDown" v-on:keydown.enter="onEnter" :placeholder="getPlaceholder">
+  </div>
 </template>
 
 <script>
@@ -10,7 +13,13 @@ export default {
   props: ['name', 'id', 'done'],
   data() {
     return {
-      text: ''
+      text: '',
+      placeholder: [
+        'What you wish to do?',
+        'Did you miss out anything?',
+        'I wish to',
+        'I will complete'
+      ]
     };
   },
   mounted () {
@@ -36,13 +45,18 @@ export default {
           id: this.id,
           name: this.text
         })
-        console.log(evt);
       }
     }, 300),
     ...mapActions([
       'createTodo',
       'updateTodo'
     ])
+  },
+  computed: {
+    getPlaceholder () {
+      const random = Math.floor(Math.random() * (this.placeholder.length - 1 - 1 + 1)) + 1;
+      return this.placeholder[random]
+    }
   }
 };
 </script>
