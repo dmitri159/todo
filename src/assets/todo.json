@@ -1,0 +1,12 @@
+[
+	{
+		"id": 1,
+		"name": "First item",
+		"done": false
+	},
+	{
+		"id": 2,
+		"name": "Second item",
+		"done": true
+	}
+]

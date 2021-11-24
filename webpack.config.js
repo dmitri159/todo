@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: path.join(__dirname, 'src/main.js'),
@@ -42,6 +43,9 @@ module.exports = {
             template: path.resolve(__dirname, 'public/index.html')
         }),
         new MiniCssExtractPlugin(),
+        new CopyWebpackPlugin({
+            patterns: [{ from: 'src/assets', to: 'external' }]
+        })
     ],
     devServer: {
         watchContentBase: true,
